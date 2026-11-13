@@ -19,7 +19,7 @@ from werkzeug.security import (
 )
 
 # Configuracion principal
-app = Flask(__name__)
+app = Flask(__name__,template_folder='.',static_folder='.',static_urlpath='')
 
 app.secret_key = os.environ.get(
     "SECRET_KEY",
