@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi misión | Misión Cerebrito</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/estilos.css') }}">
+
+</head>
+
+<body class="app-page">
+
+<header class="app-header">
+
+    <a href="/panel" class="brand">
+        🧠 Misión Cerebrito
+    </a>
+
+    <div class="user-info">
+
+        <span>Hola, {{ nombre }} ✨</span>
+
+        <a href="{{ url_for('cerrar_sesion') }}">
+            Cerrar sesión
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="app-container">
+
+    <section class="dashboard-banner">
+
+        <div>
+            <span class="eyebrow">TU ESPACIO DE APRENDIZAJE</span>
+
+            <h1>¡Tu próxima misión te espera!</h1>
+
+            <p>
+                Aprende, juega y demuestra tus conocimientos.
+            </p>
+        </div>
+
+        <div class="banner-brain">🧠</div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <button data-section="inicio" class="active">
+            🏠 Inicio
+        </button>
+
+        <button data-section="lengua">
+            📚 Lengua y Comunicación
+        </button>
+
+        <button data-section="matematicas">
+            ➗ Pensamiento Matemático
+        </button>
+
+        <button data-section="arte">
+            🎨 Arte y creatividad
+        </button>
+
+        <button data-section="glosario">
+            📖 Glosario
+        </button>
+
+        <button data-section="avances">
+            🏆 Mis avances
+        </button>
+
+    </nav>
+
+
+    <!-- INICIO -->
+
+    <section id="seccion-inicio" class="seccion active">
+
+        <h2>¿Qué aprenderemos hoy?</h2>
+
+        <div class="cards">
+
+            <article class="subject-card lavender">
+
+                <span>📚</span>
+
+                <h3>Lengua y Comunicación</h3>
+
+                <p>
+                    Mejora tu comprensión lectora,
+                    vocabulario y ortografía.
+                </p>
+
+                <button data-go="lengua">
+                    Comenzar →
+                </button>
+
+            </article>
+
+
+            <article class="subject-card peach">
+
+                <span>➗</span>
+
+                <h3>Pensamiento Matemático</h3>
+
+                <p>
+                    Resuelve operaciones, ecuaciones
+                    y problemas cotidianos.
+                </p>
+
+                <button data-go="matematicas">
+                    Comenzar →
+                </button>
+
+            </article>
+
+
+            <article class="subject-card mint">
+
+                <span>🎨</span>
+
+                <h3>Arte y creatividad</h3>
+
+                <p>
+                    Descubre colores y desarrolla
+                    tu imaginación.
+                </p>
+
+                <button data-go="arte">
+                    Comenzar →
+                </button>
+
+            </article>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+                ⭐
+                <strong id="home-points">0</strong>
+                <small>Puntos acumulados</small>
+            </div>
+
+            <div class="stat">
+                ✅
+                <strong id="home-completed">0</strong>
+                <small>Actividades realizadas</small>
+            </div>
+
+            <div class="stat">
+                🚀
+                <strong id="home-levels">2</strong>
+                <small>Niveles disponibles</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LENGUA -->
+
+    <section id="seccion-lengua" class="seccion">
+
+        <h2>📚 Lengua y Comunicación</h2>
+
+        <p>
+            Lee, comprende y demuestra lo que sabes.
+        </p>
+
+        <div class="level-track" id="language-track"></div>
+
+        <div id="language-activities" class="activity-grid"></div>
+
+    </section>
+
+
+    <!-- MATEMATICAS -->
+
+    <section id="seccion-matematicas" class="seccion">
+
+        <h2>➗ Pensamiento Matemático</h2>
+
+        <p>
+            Resuelve los retos y aprende paso a paso.
+        </p>
+
+        <div class="level-track" id="math-track"></div>
+
+        <div id="math-activities" class="activity-grid"></div>
+
+    </section>
+
+
+    <!-- ARTE -->
+
+    <section id="seccion-arte" class="seccion">
+
+        <h2>🎨 Arte y creatividad</h2>
+
+        <p>
+            Aprende sobre colores y desarrolla tu imaginación.
+        </p>
+
+        <div class="activity-grid">
+
+            <article class="activity-card">
+
+                <h3>El círculo cromático</h3>
+
+                <p>
+                    ¿Qué color se obtiene al mezclar
+                    azul y amarillo?
+                </p>
+
+                <div class="color-options">
+
+                    <button class="color-choice" data-color="Verde">
+                        🟢 Verde
+                    </button>
+
+                    <button class="color-choice" data-color="Morado">
+                        🟣 Morado
+                    </button>
+
+                    <button class="color-choice" data-color="Naranja">
+                        🟠 Naranja
+                    </button>
+
+                </div>
+
+                <div id="art-feedback" class="feedback"></div>
+
+                <button id="art-submit" class="btn primary" disabled>
+                    Comprobar respuesta
+                </button>
+
+            </article>
+
+
+            <article class="activity-card">
+
+                <h3>Mi idea creativa</h3>
+
+                <p>
+                    Escribe una idea para crear
+                    una obra que represente la amistad.
+                </p>
+
+                <textarea
+                    id="creative-text"
+                    rows="4"
+                    placeholder="Mi obra representaría..."
+                ></textarea>
+
+                <button id="creative-save" class="btn primary">
+                    Guardar mi idea
+                </button>
+
+                <div id="creative-feedback" class="feedback"></div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- GLOSARIO -->
+
+    <section id="seccion-glosario" class="seccion">
+
+        <h2>📖 Glosario educativo</h2>
+
+        <p>
+            Consulta el significado de palabras desconocidas.
+        </p>
+
+        <input
+            type="text"
+            id="glossary-search"
+            class="search-input"
+            placeholder="🔎 Buscar palabra..."
+        >
+
+        <div id="glossary-list" class="glossary-grid"></div>
+
+    </section>
+
+
+    <!-- AVANCES -->
+
+    <section id="seccion-avances" class="seccion">
+
+        <h2>🏆 Mis avances</h2>
+
+        <p>
+            Consulta tus puntuaciones y actividades realizadas.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat">
+                ⭐
+                <strong id="progress-points">0</strong>
+                <small>Puntos totales</small>
+            </div>
+
+            <div class="stat">
+                🎯
+                <strong id="progress-completed">0</strong>
+                <small>Actividades completadas</small>
+            </div>
+
+        </div>
+
+
+        <div class="progress-columns">
+
+            <article class="progress-card">
+
+                <h3>📚 Lengua y Comunicación</h3>
+
+                <div class="progress-bar">
+                    <span id="language-progress-bar"></span>
+                </div>
+
+                <p id="language-progress-text"></p>
+
+                <p id="language-progress-level"></p>
+
+            </article>
+
+
+            <article class="progress-card">
+
+                <h3>➗ Pensamiento Matemático</h3>
+
+                <div class="progress-bar">
+                    <span id="math-progress-bar"></span>
+                </div>
+
+                <p id="math-progress-text"></p>
+
+                <p id="math-progress-level"></p>
+
+            </article>
+
+        </div>
+
+
+        <h3>Actividad reciente</h3>
+
+        <div id="history-list"></div>
+
+    </section>
+
+</main>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

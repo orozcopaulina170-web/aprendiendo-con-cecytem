@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Misión Cerebrito</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+
+<body>
+
+<header class="topbar">
+    <a href="/" class="brand">🧠 Misión Cerebrito</a>
+    <span>Aprende · Juega · Descubre</span>
+</header>
+
+<main class="welcome-container">
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span class="eyebrow">PLATAFORMA EDUCATIVA</span>
+
+            <h1>
+                ¡Bienvenidos a
+                <span>Misión Cerebrito!</span>
+            </h1>
+
+            <p>
+                Un espacio donde aprender es divertido.
+                Fortalece tus habilidades en lectura,
+                matemáticas y arte mediante actividades,
+                retos y juegos interactivos.
+            </p>
+
+            <p class="purpose">
+                Aprende a tu ritmo, supera desafíos,
+                consigue puntos y descubre todo
+                lo que eres capaz de lograr.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#login" class="btn primary">
+                    Iniciar sesión
+                </a>
+
+                <a href="#registro" class="btn secondary">
+                    Crear cuenta
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+            <div class="brain">🧠</div>
+            <div class="books">📚</div>
+            <div class="pencil">✏️</div>
+            <div class="star">⭐</div>
+        </div>
+
+    </section>
+
+    <!-- Mensajes de Flask -->
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+
+        {% for tipo, mensaje in mensajes %}
+
+            <div class="alert {{ tipo }}">
+                {{ mensaje }}
+            </div>
+
+        {% endfor %}
+
+    {% endwith %}
+
+
+    <!-- FORMULARIOS -->
+
+    <section class="forms-container">
+
+        <!-- INICIAR SESION -->
+
+        <form
+            class="form-card"
+            id="login"
+            action="{{ url_for('login') }}"
+            method="POST"
+        >
+
+            <div class="form-icon">🔑</div>
+
+            <h2>Iniciar sesión</h2>
+
+            <p>Continúa con tu aventura educativa.</p>
+
+            <label>Nombre de usuario</label>
+
+            <input
+                type="text"
+                name="usuario"
+                placeholder="Escribe tu usuario"
+                minlength="3"
+                required
+            >
+
+            <label>Contraseña</label>
+
+            <input
+                type="password"
+                name="contrasena"
+                placeholder="Escribe tu contraseña"
+                required
+            >
+
+            <button type="submit" class="btn primary full">
+                Entrar a mi cuenta
+            </button>
+
+        </form>
+
+
+        <!-- CREAR CUENTA -->
+
+        <form
+            class="form-card"
+            id="registro"
+            action="{{ url_for('registro') }}"
+            method="POST"
+        >
+
+            <div class="form-icon">🌟</div>
+
+            <h2>Crear cuenta</h2>
+
+            <p>Regístrate para comenzar tu misión.</p>
+
+            <label>Nombre completo</label>
+
+            <input
+                type="text"
+                name="nombre"
+                placeholder="Tu nombre"
+                maxlength="80"
+                required
+            >
+
+            <label>Nombre de usuario</label>
+
+            <input
+                type="text"
+                name="usuario"
+                placeholder="Crea un usuario"
+                minlength="3"
+                maxlength="30"
+                required
+            >
+
+            <label>Contraseña</label>
+
+            <input
+                type="password"
+                name="contrasena"
+                placeholder="Mínimo 6 caracteres"
+                minlength="6"
+                required
+            >
+
+            <label>Grado escolar</label>
+
+            <select name="grado" required>
+
+                <option value="">Selecciona tu grado</option>
+
+                <option>Secundaria</option>
+
+                <option>1.º de bachillerato</option>
+
+                <option>2.º de bachillerato</option>
+
+                <option>3.º de bachillerato</option>
+
+            </select>
+
+            <button type="submit" class="btn primary full">
+                Crear mi cuenta
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+    🧠 Misión Cerebrito | Aprende a tu ritmo
+</footer>
+
+</body>
+</html>
