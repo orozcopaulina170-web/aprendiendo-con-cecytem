@@ -42,10 +42,9 @@ app.secret_key = os.environ.get(
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.path.join(BASE_DIR, "mision_cerebrito.db")
 
-
-# ==========================================
+# ============================
 # CONEXION CON SQLITE
-# ==========================================
+# ============================
 
 def conectar():
     conexion = sqlite3.connect(DATABASE)
