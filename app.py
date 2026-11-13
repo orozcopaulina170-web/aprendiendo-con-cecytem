@@ -19,7 +19,7 @@ from werkzeug.security import (
 )
 
 # Configuracion principal
-app = Flask(__name__,template_folder='.',static_folder='.')
+app = Flask(__name__,template_folder='.')
 
 @app.route('/estilos.css')
 def css():
