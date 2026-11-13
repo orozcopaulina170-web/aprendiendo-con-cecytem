@@ -28,6 +28,10 @@ def css():
 @app.route('/script.js')
 def js():
     return send_from_directory('.', 'script.js')
+    
+    @app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory('.', filename)
 
 app.secret_key = os.environ.get(
     "SECRET_KEY",
