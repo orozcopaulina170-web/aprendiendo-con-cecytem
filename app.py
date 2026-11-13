@@ -10,7 +10,7 @@ from functools import wraps
 from flask import (
     Flask, render_template, request,
     redirect, url_for, session, flash,
-    jsonify
+    jsonify, send_from_directory
 )
 
 from werkzeug.security import (
@@ -20,6 +20,14 @@ from werkzeug.security import (
 
 # Configuracion principal
 app = Flask(__name__,template_folder='.',static_folder='.')
+
+@app.route('/estilos.css')
+def css():
+    return send_from_directory('.', 'estilos.css')
+
+@app.route('/script.js')
+def js():
+    return send_from_directory('.', 'script.js')
 
 app.secret_key = os.environ.get(
     "SECRET_KEY",
